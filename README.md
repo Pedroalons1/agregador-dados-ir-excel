@@ -30,7 +30,7 @@ Criar um agregador de dados estruturado no Excel que permita controlar registros
 ### Aba `INFORMES` 
 - **Total de rendimentos / valores atuais informados (`D8`):** 
   ```excel 
-  =SOMASE(C11:C23;"VALOR ATUAL";D11:D23).
+  =SOMASE(C11:C23;"VALOR ATUAL";D11:D23)
   ``` 
 
 Soma os valores das linhas onde a coluna C corresponde exatamente a "VALOR ATUAL". 
@@ -38,14 +38,14 @@ Soma os valores das linhas onde a coluna C corresponde exatamente a "VALOR ATUAL
 
 ### Aba `NOTAS`
 
--**Total dinâmico de entradas (E25):**
+- **Total dinâmico de entradas (E25):**
 ```excel 
 =SUBTOTAL(109;tbEntradas[VALOR]) 
  ```
 
 Calcula a soma (109) da coluna VALOR da tabela tbEntradas, respeitando filtros aplicados na tabela. 
 
-**Total dinâmico de saídas (I25):** 
+- **Total dinâmico de saídas (I25):** 
 ```excel
 =SUBTOTAL(109;tbSaidas[VALOR]) 
  ```
