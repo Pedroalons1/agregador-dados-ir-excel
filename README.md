@@ -30,66 +30,63 @@ Criar um agregador de dados estruturado no Excel que permita controlar registros
 ### Aba `INFORMES` 
 - **Total de rendimentos / valores atuais informados (`D8`):** 
   ```excel 
-  =SUMIF(C11:C23,"VALOR ATUAL",D11:D23) 
- 
+  =SOMASE(C11:C23,"VALOR ATUAL",D11:D23) 
 
 Soma os valores das linhas onde a coluna C corresponde exatamente a "VALOR ATUAL". 
 
-Aba NOTAS 
+- **Aba `NOTAS`**
 
-Total dinâmico de entradas (E25): 
+**Total dinâmico de entradas (E25):**
 
-Excel 
-
+```excel 
 =SUBTOTAL(109,tbEntradas[VALOR]) 
- 
+ ```
 
 Calcula a soma (109) da coluna VALOR da tabela tbEntradas, respeitando filtros aplicados na tabela. 
 
-Total dinâmico de saídas (I25): 
-
-Excel 
+**Total dinâmico de saídas (I25):** 
+```excel
 
 =SUBTOTAL(109,tbSaidas[VALOR]) 
- 
+ ```
 
 Calcula a soma (109) da coluna VALOR da tabela tbSaidas, respeitando filtros aplicados na tabela. 
 
-Total de entradas no resumo (I2): =E25 
+**Total de entradas no resumo (I2):** `=E25`
 
-Total de saídas no resumo (I3): =I25 
+**Total de saídas no resumo (I3):** `=I25` 
 
-Saldo entre entradas e saídas (I4): =I2-I3 
+**Saldo entre entradas e saídas (I4):** `=I2-I3` 
 
-Total dedutível (I5): fórmula matricial (ArrayFormula) para somar os valores de tbSaidas[VALOR] cuja categoria em tbSaidas[CATEGORIA] está marcada como "Sim" na coluna DEDUTÍVEL (tbCatSaidas). 
+**Total dedutível (I5):** fórmula matricial (ArrayFormula) para somar os valores de tbSaidas[VALOR] cuja categoria em tbSaidas[CATEGORIA] está marcada como "Sim" na coluna DEDUTÍVEL (tbCatSaidas). 
 
-✅ Validações de Dados Implementadas 
+**✅ Validações de Dados Implementadas** 
 
-Aba TITULAR 
+**Aba `TITULAR`**
 
-CPF (D8): número inteiro entre 1 e 99999999999, com mensagem de orientação e erro para evitar pontos ou traços. 
+**CPF (D8):** número inteiro entre 1 e 99999999999, com mensagem de orientação e erro para evitar pontos ou traços. 
 
-Data de nascimento (D9): data menor ou igual à data atual (TODAY()). 
+**Data de nascimento (D9):** data menor ou igual à data atual (HOJE()). 
 
-E-mail (D17): validação personalizada verificando a presença de "@" e "." após o "@": 
+**E-mail (D17):** validação personalizada verificando a presença de "@" e "." após o "@": 
 
-Excel 
+```excel 
 
-=AND(ISNUMBER(FIND("@",D17)),ISNUMBER(FIND(".",D17,FIND("@",D17)))) 
- 
+=E(ÉNUM(PROCURAR("@",D17)),ÉNUM(PROCURAR(".",D17,PROCURAR("@",D17)))) 
+ ```
 
-Campos "Sim" / "Não" (D18:D20): lista suspensa (Sim,Não) para alterações em relação à entrega anterior, dependente cônjuge e residente no exterior. 
+**Campos "Sim" / "Não" (D18:D20):** lista suspensa (Sim,Não) para alterações em relação à entrega anterior, dependente cônjuge e residente no exterior. 
 
-Aba INFORMES 
+**Aba `INFORMES`**
 
-Valores (D12, D17, D22): número decimal maior ou igual a 0. 
+**Valores (D12, D17, D22):** número decimal maior ou igual a 0. 
 
-Aba NOTAS 
+**Aba `NOTAS`**
 
-Datas (C9:C24 e G9:G24): validação de data no intervalo do ano-base (01/01/2026 a 31/12/2026). 
+**Datas (C9:C24 e G9:G24):** validação de data no intervalo do ano-base (01/01/2026 a 31/12/2026). 
 
-Valores (E9:E24 e I9:I24): número decimal maior que 0. 
+**Valores (E9:E24 e I9:I24):** número decimal maior que 0. 
 
-📌 Observação sobre os Dados de Exemplo 
+**📌 Observação sobre os Dados de Exemplo** 
 
 Os registros presentes na planilha servem como exemplo de preenchimento e estruturação da ferramenta e devem ser substituídos pelos dados reais do contribuinte no momento do uso.
